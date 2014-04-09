@@ -1,0 +1,28 @@
+{
+	"tracks": [
+		{
+			"url": "assets/track1.mp3",
+			"title": "Track1Yo",
+			"artist": "Big Granny",
+			"genre": "Hip-Hop",
+			"album": "Big Granny",
+			"year": "2013"
+		},
+		{
+			"url": "assets/track2.mp3",
+			"title": "All my little ducklings",
+			"artist": "Duckband",
+			"genre": "Death Metal",
+			"album": "Screamalbum",
+			"year": "2666"
+		},
+		{
+			"url": "assets/track3.mp3",
+			"title": "Some randomtrack",
+			"artist": "Artist N#3",
+			"genre": "Dance",
+			"album": "Biting Bits",
+			"year": "2012"
+		}
+	]
+}

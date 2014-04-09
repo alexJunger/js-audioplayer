@@ -1,0 +1,332 @@
+body {
+  background: $background;
+  color: $text;
+  text-shadow: 0 1px black;
+  font-size: 16px;
+
+  &.return {
+    pointer-events: none;
+
+    .panel {
+      pointer-events: all;
+    }
+  }
+}
+
+*::selection {
+  background: transparent;
+}
+
+#tracks {
+  position: absolute;
+  left: 0;
+  right: 33%;
+  top: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.1);
+  box-shadow: inset -2px 0px 2px rgba(0,0,0,0.2);
+
+  .mp3-info {
+    display: none;
+  }
+
+  label {
+    text-indent: -999px;
+
+    p {
+      display: none;
+    }
+
+    input {
+      cursor: pointer;
+      background: #ccc;
+      box-shadow: 0 1px 0px black;
+      width: 2em;
+      height: 2em;
+      text-indent: -9999px;
+      border-radius: 50%;
+    }
+  }
+
+  .controls {
+    text-align: right;
+  }
+}
+
+.area {
+  padding: 2em;
+  margin: 0;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+#trackInfo {
+  .track {
+    background: transparent;
+  }
+
+  h4.title {
+    font-size: 1.3em;
+    color: $highlight;
+  }
+
+  .year, .genre {
+    font-size: 0.8em;
+    display: inline;
+  }
+
+  p, .title, .year {
+    margin: 0;
+    width: 100%;
+    color: $text;
+  }
+}
+
+.controls {
+  height: 8em;
+  top: 0;
+}
+
+#tracklist {
+  box-shadow: inset 0px 2px 10px rgba(0,0,0,0.05);
+  list-style-type: none;
+  display: table;
+
+  li {
+    &.item {
+      transition: all 0.3s ease;
+
+      span.button {
+        width: 2%;
+      }
+
+      &.hovered {
+        background: darken($background, 5);
+        text-shadow: 0 0 1em rgba(0,0,0,0.3), 0 0.3em 0.1em rgba(0,0,0,0.3);
+        &, span {
+          cursor: -webkit-grabbing;
+        }
+      }
+
+      transition: background 0.2s ease;
+
+      &:nth-child(2 n) {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      &:hover, &:active, &:focus, &.hovered {
+        span {
+          color: $highlight;
+        }
+
+        span.button button {
+          color: $highlight;
+          opacity: 1;
+        }
+      }
+
+      &.active, &.active:hover, &.active:focus, &.active:active {
+        background: $highlight;
+
+        span {
+          color: $background;
+          text-shadow: 0 0 0;
+        }
+
+        span.button button {
+          opacity: 1;
+          color: $background;
+          text-shadow: 0px 0px 0px;
+        }
+      }
+    }
+
+    display: table-row;
+
+    > span {
+      display: table-cell;
+      cursor: default;
+      padding: 1em;
+      border-bottom: 1px solid rgba($highlight, 0.9);
+    }
+
+    &.header {
+      span {
+        font-weight: bold;
+        color: #CCC;
+        cursor: default;
+      }
+    }
+
+    button {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      color: $background;
+      font-size: 0.8rem;
+      border: 0;
+    }
+  }
+}
+
+.item:hover span.button button {
+  opacity: 1;
+}
+
+.title {
+  width: 20%
+}
+
+.genre {
+  width: 20%;
+}
+
+.artist {
+  width: 40%;
+}
+
+.genre, .artist {
+  color: #777;
+}
+
+#audio {
+  position: absolute;
+  width: 33%;
+  right: 0;
+  height: 100%;
+  text-align: center;
+}
+
+#volume {
+  width: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#timecount {
+  font-size: 0.8rem;
+  cursor: default;
+  margin: 0 0 1em;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src: url('../assets/icomoon.eot?-7x2jcn');
+  src: url('../assets/icomoon.eot?#iefix-7x2jcn') format('embedded-opentype'), url('../assets/icomoon.woff?-7x2jcn') format('woff'), url('../assets/icomoon.ttf?-7x2jcn') format('truetype'), url('../assets/icomoon.svg?-7x2jcn#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: middle;
+  cursor: pointer;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: transparent;
+  color: $text;
+  border: 0;
+  font-size: 2em;
+  text-shadow: 0px 1px black;
+
+  &:hover, &.active {
+    color: $highlight;
+  }
+
+  span {
+    display: none;
+  }
+
+  &.label {
+    pointer-events: none;
+  }
+}
+
+.icon-open:before {
+  content: "\e607";
+}
+
+.icon-list:before {
+  content: "\e608";
+}
+
+.icon-play {
+  &:before {
+    content: "\e600";
+  }
+
+  &.playing:before {
+    content: "\e601";
+  }
+}
+
+.icon-stop:before {
+  content: "\e602";
+}
+
+.icon-first:before {
+  content: "\e603";
+}
+
+.icon-last:before {
+  content: "\e604";
+}
+
+.icon-volume {
+  font-size: 1em;
+  margin-right: 1em;
+  &:before {
+    content: "\e605";
+  }
+}
+
+.icon-loop:before {
+  content: "\e606";
+}
+
+.icon-shuffle:before {
+  content: "\e609";
+}
+
+.icon-info:before {
+  content: "\e60a";
+}
+
+.icon-close:before {
+  content: "\e60b";
+}
+
+.panel {
+  display: none;
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  background: #111;
+  right: 20%;
+  bottom: 10%;
+  overflow-y: scroll;
+  border: 1em solid #111;
+  padding-right: 1em;
+  color: $text;
+  text-shadow: 0px 0px;
+  z-index: 99;
+  box-shadow: 0px -1px 0px 0px #666, 0px 0px 0px 1px #111, 0px 0px 9em 1em rgba(0, 0, 0, 0.7);
+
+  h1, h2, h3 {
+    color: $highlight;
+  }
+}

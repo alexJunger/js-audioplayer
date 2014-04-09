@@ -1,0 +1,161 @@
+.slider {
+  cursor: pointer;
+  position: relative;
+
+  &.vertical {
+    width: 1em;
+    height: 100%;
+
+    .track {
+      left: 0.33em;
+      width: 0.33em;
+    }
+
+    .thumb {
+      left: -0.33em;
+    }
+  }
+
+  &.horizontal {
+    width: 100%;
+    height: 1em;
+
+    .track {
+      top: 0.33em;
+      height: 0.33em;
+    }
+
+    .thumb {
+      top: -0.33em;
+    }
+  }
+
+  .track {
+    background: $highlight;
+    //border-radius: 13px;
+    position: relative;
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .thumb, &.active .thumb {
+    background: $text;
+    box-shadow: 0px 1px black;
+    box-sizing: border-box;
+  }
+
+  &.active {
+
+    .thumb {
+      box-shadow: inset 0px 1px 2px #ccc;
+      cursor: pointer !important;
+    }
+
+    .tooltip {
+      display: table;
+    }
+  }
+}
+
+.thumb {
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+}
+
+.track {
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+}
+
+.tooltip {
+  display: none;
+  position: relative;
+  font-size: 0.7em;
+  color: #555;
+  background-position: left center;
+  text-align: center;
+  top: -20px;
+  left: -4px;
+
+  * {
+    display: table-cell;
+  }
+
+  .vertical & {
+    top: 0;
+    left: 20px;
+
+    * {
+      vertical-align: top;
+    }
+  }
+
+  span {
+    border: 1px solid #aaaaaa;
+    border-radius: 7px 15px 15px 7px;
+    background: #ccc;
+    padding: 2px;
+    text-shadow: 0px 1px #eee;
+    background: linear-gradient(to bottom, #eee 0%, #ccc 100%);
+  }
+}
+
+.tooltip-inner {
+  color: white;
+  background: black;
+  min-width: 20px;
+  position: relative;
+  padding: 3px;
+
+  .horizontal & {
+    bottom: 3px;
+  }
+
+  .vertical .tooltip & {
+    left: 3px;
+  }
+}
+
+.tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  border-top: 5px solid #000000;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  transition: border 0.5s ease;
+  position: absolute;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+
+  .vertical .tooltip & {
+    left: 0;
+    top: 50%;
+    border-right: 5px solid #000000;
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+    transition: border 0.5s ease;
+    position: absolute;
+    margin-top: -5px;
+  }
+}
+
+.horizontal + .tooltip {
+  padding: 13px 2px 2px 2px;
+  background-position: center top;
+  background-image: url('../img/tooltip_h.png');
+
+  span {
+    border-radius: 7px 7px 15px 15px;
+  }
+}
+
+.reposition {
+  .thumb, .tooltip {
+    transition: left 0.1s, top 0.1s;
+  }
+}

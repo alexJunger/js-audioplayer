@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset='utf-8'/>
+    <link rel='stylesheet' href='vendor/normalize.css'/>
+    <link rel='stylesheet' href='css/style.css'/>
+</head>
+<body>
+
+
+<section id="tracks">
+    <ul id="tracklist" class="area">
+        <li class="header">
+            <span class="play"></span>
+            <span class="title">Title</span>
+            <span class="artist">Artist</span>
+            <span class="genre">Genre</span>
+            <span class="delete"></span>
+        </li>
+    </ul>
+
+    <div class="area controls">
+        <span class="mp3-info">MP3 Files can be opened but are currently not saved in the list!</span>
+        <button id="info" class="icon-info"><span>Info</span></button>
+
+        <label class="icon-open">
+            <span>
+                <p>Import MP3</p>
+                <input type="file" name="mp3File" id="fileSelection" accept="audio/*">
+            </span>
+        </label>
+
+        <label class="icon-list">
+            <span>
+                <p>Import JSON Playlist file</p>
+                <input type="file" name="jsonFile" id="jsonSelection" accept="application/json">
+            </span>
+        </label>
+    </div>
+</section>
+
+<section id="audio">
+    <div class="area"><span class="label icon-volume"><span>Volume:</span></span>
+        <div id="volume" class="slider horizontal"></div>
+    </div>
+
+    <div class="area" id="trackInfo">
+    </div>
+
+    <div class="area controls">
+        <div id="time" class="slider horizontal"></div>
+        <div id="timecount">
+            <span id="current">00:00</span> / <span id="total">00:00</span>
+        </div>
+        <button id="previous" class="icon-first"><span>Previous</span></button>
+        <button id="play" class="icon-play pausing"><span>Play</span></button>
+        <button id="stop" class="icon-stop"><span>Stop</span></button>
+        <button id="next" class="icon-last"><span>Next</span></button>
+        <button id="repeat" class="icon-loop"><span>Repeat</span></span></button>
+        <button id="shuffle" class="icon-shuffle"><span>Shuffle</span></span></button>
+    </div>
+
+    <audio id="audioTag">
+    </audio>
+</section>
+<div class="panel" id="info-panel">
+    <h2>Importing MP3s</h2>
+
+    <p>You can import mp3-files by clicking the "open" icon beneath the tracklist. Please note however,
+        that mp3-files will not be restored when reloading, at this time.</p>
+
+    <h2>Importing JSON</h2>
+
+    <p>You can import JSON-files by clicking the "open" icon beneath the tracklist.
+        Those tracks imported from JSON will be restored when you reload the player.
+        The structure of the JSON should look like this:</p>
+    <code>
+        {<br/>
+        &nbsp;"tracks": [<br/>
+        &nbsp;&nbsp;{<br/>
+        &nbsp;&nbsp;&nbsp;"url": "assets/filename.mp3",<br/>
+        &nbsp;&nbsp;&nbsp;"title": "Tracktitle",<br/>
+        &nbsp;&nbsp;&nbsp;"artist": "The Artist",<br/>
+        &nbsp;&nbsp;&nbsp;"genre": "The Genre",<br/>
+        &nbsp;&nbsp;&nbsp;"album": "The Album",<br/>
+        &nbsp;&nbsp;&nbsp;"year": "2014"<br/>
+        &nbsp;&nbsp;},<br/>
+        
+	&nbsp;&nbsp;{<br/>
+        &nbsp;&nbsp;...<br/>
+        &nbsp;&nbsp;}<br/>
+        &nbsp;]<br/>
+        }
+    </code>
+</div>
+
+<script src='vendor/jquery-2.0.3.js'></script>
+<script src='js/models/error.js'></script>
+<script src='js/models/track.js'></script>
+<script src='js/models/tracklist.js'></script>
+<script src='js/models/player.js'></script>
+<script src="js/views/jquery.myslider.js"></script>
+<script src='js/views/views.js'></script>
+<script src='js/controllers/controllers.js'></script>
+<script src='js/main.js'></script>
+</body>
+</html>
